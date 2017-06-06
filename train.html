@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Train Scheduler</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <table id='content'>
+        <tr>
+          <th class='title'>Train Name</th>
+          <th class='title'>Destination</th>
+          <th class='title'>Frequency(min)</th>
+          <th class='title'>Next arrival</th>
+          <th class='title'>Minutes away</th>
+        </tr>
+      </table>
+    </div>
+
+    <div class="row">
+      <p class="formHead"><label for="name">Train Name:</label></p>
+      <input id="name" class="details form" type="text">
+      <p class="formHead"><label for="email">Destionation:</label></p>
+      <input id="destination" class="details form" type="text">
+      <p class="formHead"><label for="message">First Train Time: (HH:MM - military time)</label></p>
+      <input id="time" class="details form" type="text">
+      <p class="formHead"><label for="message">Frequency</label></p>
+      <input id="frequency" class="details form" type="text">
+      <input class="details form submit" type="submit" name="Submit" value="Submit">
+    </div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.js" charset="utf-8"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+  <script src="assets/js/app.js" charset="utf-8"></script>
+</body>
+
+</html>
