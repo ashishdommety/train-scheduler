@@ -11,21 +11,31 @@ $(document).ready(function(){
     firebase.initializeApp(config);
 
     var database = firebase.database();
-    $('')
-    var ref = database.ref('trains');
-    var trainData = {
-      name: 'Ashish Express',
-      destination: 'DisneyLand',
-      frequency: '30min',
-      nextArrival:'now',
-      minutesAway:'30'
-    };
 
-    ref.push(trainData);
+    var ref = database.ref('trains');
+
+$(document).on('click', '.submit', function(){
+
+  $('.tableRow').empty();
+
+  // TODO: Create a varaible that stores the next arrival and the minutes away values
+  var trainData = {
+    name: $('#name').val(),
+    destination: $('#destination').val(),
+    frequency: $('#frequency').val(),
+    nextArrival:'now',
+    minutesAway:'30'
+  };
+
+  $('#name, #destination, #frequency, #time').val('');
+
+  ref.push(trainData);
+})
 
     ref.on('value',getData,error);
 
     function getData(data){
+
       var data = data.val();
       // console.log(data);
       var key = Object.keys(data);
@@ -35,8 +45,6 @@ $(document).ready(function(){
 
         console.log($('.table'));
 
-
-        // var row = $('<tr>').addClass('line-'+i);
         var k = key[i];
 
         var name = data[k].name;
@@ -45,18 +53,7 @@ $(document).ready(function(){
         var nextArrival = data[k].nextArrival;
         var minutesAway = data[k].minutesAway;
 
-        $('#content').append('<tr><td>'+name+'</td><td>'+destination+'</td><td>'+frequency+'</td><td>'+nextArrival+'</td><td>'+minutesAway+'</td></tr>');
-
-        // var elem = $('<td>').text(name).addClass('elements-of-'+i);
-
-        // $('.line'+i).append(elem)
-        // console.log($('.line'+i));
-        // $('<td>').text(destination).addClass('.elements of '+i);
-        // $('<td>').text(frequency).addClass('.elements of '+i);
-        // $('<td>').text(nextArrival).addClass('.elements of '+i);
-        // $('<td>').text(minutesAway).addClass('.elements of '+i);
-        //
-        // $('.line'+i).append('elements of'+i);
+        $('#content').append('<tr class="tableRow"><td>'+name+'</td><td>'+destination+'</td><td>'+frequency+'</td><td>'+nextArrival+'</td><td>'+minutesAway+'</td></tr>');
 
       }
     }

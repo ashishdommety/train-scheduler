@@ -9,9 +9,13 @@
 </head>
 
 <body>
+    <h1>Train Listing</h1>
   <div class="container">
     <div class="row">
+    </div>
+    <div class="row" id='schedule'>
       <table id='content'>
+        <caption>Current Train Schedule</caption>
         <tr>
           <th class='title'>Train Name</th>
           <th class='title'>Destination</th>
@@ -22,16 +26,27 @@
       </table>
     </div>
 
-    <div class="row">
-      <p class="formHead"><label for="name">Train Name:</label></p>
-      <input id="name" class="details form" type="text">
-      <p class="formHead"><label for="email">Destionation:</label></p>
-      <input id="destination" class="details form" type="text">
-      <p class="formHead"><label for="message">First Train Time: (HH:MM - military time)</label></p>
-      <input id="time" class="details form" type="text">
-      <p class="formHead"><label for="message">Frequency</label></p>
-      <input id="frequency" class="details form" type="text">
-      <input class="details form submit" type="submit" name="Submit" value="Submit">
+    <div class="row" id='addTrain'>
+      <h3 class='heading'>Add Train</h3>
+      <div class="formHead">
+        <div class="elem">
+          <p><label for="name">Train Name:</label></p>
+          <input id="name" class="inputSlot" type="text">
+        </div>
+        <div class="elem">
+          <p><label for="email">Destination:</label></p>
+          <input id="destination" class="inputSlot" type="text">
+        </div>
+        <div class="elem">
+          <p><label for="message">First Train Time: (HH:MM - military time)</label></p>
+          <input id="time" class="inputSlot" type="text">
+        </div>
+        <div class="elem">
+          <p><label for="message">Frequency</label></p>
+          <input id="frequency" class="inputSlot" type="text">
+        </div>
+        <input class="submit" type="submit" name="Submit" value="Submit">
+      </div>
     </div>
 
   </div>
