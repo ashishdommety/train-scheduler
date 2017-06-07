@@ -42,9 +42,6 @@ $(document).on('click', '.submit', function(){
       // console.log(key);
 
       for(var i = 0; i < key.length; i++){
-
-        console.log($('.table'));
-
         var k = key[i];
 
         var name = data[k].name;
@@ -60,5 +57,9 @@ $(document).on('click', '.submit', function(){
     function error(){
       console.log('error occured');
     }
+    var d = new Date();
+    var time = d.getHours() + ':'+ d.getMinutes();
+  
+console.log(time);
 
 });
