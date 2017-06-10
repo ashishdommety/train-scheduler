@@ -41,7 +41,7 @@ $(document).ready(function() {
       $(this).parent().parent().remove();
     }
 
-  })
+  });
 
   database.ref().on('value', getData, error);
 
@@ -62,7 +62,7 @@ $(document).ready(function() {
 
         //gets the start time of the train in object form so that it can be manipulated with
         //the diff function
-        var convertedTime = moment(data.trains[k].initialTrainTime, 'HH:mm');
+        var convertedTime = moment(parseInt(data.trains[k].initialTrainTime), 'HH:mm');
         console.log(convertedTime);
 
         //difference between start time and current time in minutes
