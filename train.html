@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Train Listing</h1>
+  <h1>Train Listing</h1>
   <div class="container">
     <div class="row">
     </div>
@@ -19,10 +19,14 @@
         <tr>
           <th class='title'>Train Name</th>
           <th class='title'>Destination</th>
+          <th class='title'>Start Time</th>
           <th class='title'>Frequency(min)</th>
           <th class='title'>Next arrival</th>
           <th class='title'>Minutes away</th>
         </tr>
+        <div id="TrainData">
+        </div>
+
       </table>
     </div>
 
@@ -39,7 +43,7 @@
         </div>
         <div class="elem">
           <p><label for="message">First Train Time: (HH:MM - military time)</label></p>
-          <input id="time" class="inputSlot" type="text">
+          <input id="initTrainTime" class="inputSlot" type="text">
         </div>
         <div class="elem">
           <p><label for="message">Frequency</label></p>
