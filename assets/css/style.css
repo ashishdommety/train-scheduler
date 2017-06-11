@@ -34,6 +34,7 @@ caption {
 #schedule, #addTrain {
   border: 2px solid #69306D;
   margin: 10px;
+  border-radius: 5px;
 }
 
 .formHead {
@@ -58,6 +59,10 @@ h1 {
   width: 100%;
 }
 
+.submit:hover{
+  background-color: #bc4bcc;
+}
+
 .elem {
   margin: 10px;
 }
@@ -72,6 +77,10 @@ h1 {
   background-color: #884b8c;
   border-radius: 2px;
   color: white;
+}
+
+.delete:hover{
+  background-color: #d64242;
 }
 
 /* TODO: style the cancel buttons and all cool effects */

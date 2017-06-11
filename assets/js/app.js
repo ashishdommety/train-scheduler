@@ -12,8 +12,6 @@ $(document).ready(function() {
   firebase.initializeApp(config);
 
   var database = firebase.database();
-  //
-  var nextArrival,minutesAway = 0;
 
   $(document).on('click', '.submit, .delete', function() {
     if($(this).hasClass('submit')){
@@ -22,16 +20,22 @@ $(document).ready(function() {
       var frequency = $('#frequency').val().trim();
       var initialTrainTime = $('#initTrainTime').val().trim();
 
-      var trainData = {
-        name: name,
-        destination: destination,
-        frequency: frequency,
-        initialTrainTime: initialTrainTime
-      };
+      if(name !== '' && destination !== '' && frequency !== '' && initTrainTime!==''){
+        var trainData = {
+          name: name,
+          destination: destination,
+          frequency: frequency,
+          initialTrainTime: initialTrainTime
+        };
 
+        database.ref('trains/' + name).set(trainData);
+      }
+      else{
+        console.log('Please enter details correctly');
+      }
+      //empty the fields
       $('#name, #destination, #frequency, #initTrainTime').val('');
 
-      database.ref('trains/' + name).set(trainData);
     }
     else if($(this).has('.delete')){
       //deleting from the database
@@ -62,15 +66,15 @@ $(document).ready(function() {
         //gets the start time of the train in object form so that it can be manipulated with
         //the diff function
         var convertedTime = moment(parseInt(data.trains[k].initialTrainTime), 'HH:mm');
-        console.log(convertedTime);
+        // console.log(convertedTime);
 
           //difference between start time and current time in minutes
           var difference = moment().diff(moment(convertedTime),'minutes');
-          console.log('difference: '+ difference);
+          // console.log('difference: '+ difference);
 
           //dividing the difference in time by the frequency
           var remainder = difference % parseInt(data.trains[k].frequency);
-          console.log('remainder:' + remainder);
+          // console.log('remainder:' + remainder);
 
           //the number of minutes away is the frequency minus the remainder
           var minutesAway = parseInt(data.trains[k].frequency) - remainder;
@@ -78,13 +82,13 @@ $(document).ready(function() {
           //add the minutes away to the current moment to get the next arrival
           var nextArrival = moment().add(minutesAway, "minutes");
           nextArrival = moment(nextArrival).format("HH:mm");
-          console.log('next arrival:' + nextArrival);
+          // console.log('next arrival:' + nextArrival);
 
         var name = data.trains[k].name;
         var destination = data.trains[k].destination;
         var frequency = data.trains[k].frequency;
         var startTime = data.trains[k].initialTrainTime;
-        console.log('start time: ' + startTime );
+        // console.log('start time: ' + startTime );
 
         var trainColumns = '<td>' + name + '</td>'+
                             '<td>' + destination + '</td>'+
