@@ -65,21 +65,21 @@ $(document).ready(function() {
         var convertedTime = moment(parseInt(data.trains[k].initialTrainTime), 'HH:mm');
         console.log(convertedTime);
 
-        //difference between start time and current time in minutes
-        var difference = moment().diff(moment(convertedTime),'minutes');
-        console.log('difference: '+ difference);
+          //difference between start time and current time in minutes
+          var difference = moment().diff(moment(convertedTime),'minutes');
+          console.log('difference: '+ difference);
 
-        //dividing the difference in time by the frequency
-        var remainder = difference % parseInt(data.trains[k].frequency);
-        console.log('remainder:' + remainder);
+          //dividing the difference in time by the frequency
+          var remainder = difference % parseInt(data.trains[k].frequency);
+          console.log('remainder:' + remainder);
 
-        //the number of minutes away is the frequency minus the remainder
-        var minutesAway = parseInt(data.trains[k].frequency) - remainder;
+          //the number of minutes away is the frequency minus the remainder
+          var minutesAway = parseInt(data.trains[k].frequency) - remainder;
 
-        //add the minutes away to the current moment to get the next arrival
-        var nextArrival = moment().add(minutesAway, "minutes");
-        nextArrival = moment(nextArrival).format("HH:mm");
-        console.log('next arrival:' + nextArrival);
+          //add the minutes away to the current moment to get the next arrival
+          var nextArrival = moment().add(minutesAway, "minutes");
+          nextArrival = moment(nextArrival).format("HH:mm");
+          console.log('next arrival:' + nextArrival);
 
         var name = data.trains[k].name;
         var destination = data.trains[k].destination;
