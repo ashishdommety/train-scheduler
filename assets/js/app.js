@@ -49,7 +49,6 @@ $(document).ready(function() {
     $('.tableRow').empty();
 
     var data = data.val();
-    // console.log('data: '+ data);
 
     if(data === null){
       console.log('Enter train details');
